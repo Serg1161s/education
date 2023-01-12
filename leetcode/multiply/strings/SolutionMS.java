@@ -15,24 +15,46 @@ public class SolutionMS {
             first = num1;
             second = num2;
        }
-       int countSecond=1;
-        for (int i = second.length()-1; i >= 0; i--) {
-            int countFirst = 1*countSecond;
-            for (int j = first.length()-1; j >=0 ; j--) {
 
-                sum = sumStr (sum,countFirst, second.charAt(i),first.charAt(j));
-                countFirst=countFirst*10;
-            }
-            countSecond = countSecond*10;
+                sum = sumStr ( first , second);
 
-        }
-
-        return String.valueOf(sum);
-    }
-    private static String sumStr (String sum, int countFirst, char second, char first){
 
 
 
         return sum;
+    }
+    private static String sumStr (String firstN, String secondN){
+        ArrayList <Integer> sumIn = new ArrayList<>();
+        for (int i = firstN.length()-1; i >=0 ; i--) {
+            sumIn.add(firstN.charAt(i)-'0');
+        }
+
+        for (int i = secondN.length()-1; i >=0; i--) {
+            for (int j = 0; j <sumIn.size() ; j--) {
+                int a = secondN.charAt(i)-'0';
+                int b = sumIn.get(j);
+                int sum = a*b;
+                sumIn = resultSum (sumIn, sum, j);
+            }
+        }
+
+        String res = "";
+        return res;
+    }
+    private static ArrayList<Integer> resultSum (ArrayList<Integer> sumIn, int sum, int i){
+        sumIn.set(i,sumIn.get(i)+sum%10);
+        int count = i;
+        while (sumIn.get(count)>9){
+            sumIn.set(count,sumIn.get(count)%10);
+            sumIn.set(++count,sumIn.get(count)+1);
+        }
+
+        int countSec = i;
+        while (sumIn.get(countSec)>9){
+            sumIn.set(countSec,sumIn.get(countSec)%10);
+            sumIn.set(++countSec,sumIn.get(countSec)+1);
+        }
+        
+        return sumIn;
     }
 }
