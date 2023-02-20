@@ -15,22 +15,22 @@ public class Solution3 {
                 answer.add(curr.val);
                 curr = curr.right;
             } else {
-                last = curr.left;
-                while (last.right != null && last.right != curr) {
-                    last = last.right;
-                }
+                   last = curr.left;
+                      while (last.right != null && last.right != curr) {
+                       last = last.right;
+                      }
 
-               // If the last node is not modified, we let
-               // 'curr' be its right child. Otherwise, it means we
-               // have finished visiting the entire left subtree.
-               if (last.right == null) {
+                      // If the last node is not modified, we let
+                      // 'curr' be its right child. Otherwise, it means we
+                      // have finished visiting the entire left subtree.
+                   if (last.right == null) {
                        answer.add(curr.val);
                        last.right = curr;
                        curr = curr.left;
-               } else {
+                   } else {
                         last.right = null;
                         curr = curr.right;
-               }
+                   }
             }
         }
 

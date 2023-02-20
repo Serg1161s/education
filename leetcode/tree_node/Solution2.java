@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class Solution2 {
-    public List<Integer> preorderTraversal(TreeNode root) {
+    protected List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> answer = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         stack.add(root);
