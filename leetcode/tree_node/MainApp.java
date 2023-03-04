@@ -24,5 +24,7 @@ public class MainApp {
 //        System.out.println(s.preorderTraversal(root));
         SolutionInOrder sPO = new SolutionInOrder();
         System.out.println(sPO.inorderTraversal(root));
+        InorderTraversal s = new InorderTraversal();
+        System.out.println(s.inorderTraversal(root));
     }
 }

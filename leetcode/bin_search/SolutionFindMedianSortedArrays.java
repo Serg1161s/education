@@ -3,64 +3,39 @@ package leetcode.bin_search;
 public class SolutionFindMedianSortedArrays {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        double ans = 0;
 
-        int [] max;
-        int [] min;
-        if (nums1[(nums1.length-1)/2] > nums2[(nums2.length-1)/2] ){
-             max = nums1;
-             min = nums2;
-        } else {
-            max = nums2;
-            min = nums1;
-        }
+        int lengthNum1 = nums1.length - 1;
+        int lengthNum2 = nums2.length - 1;
 
-        int startMax = 0;
-        int endMax = (max.length-1)/2;
-        int startMin = 0;
-        int endMin = min.length-1;
-        int median = endMax;
-        int currentLeft = 0;
-        int currentRight =1;
-        int totalLength = min.length + max.length;
 
-        while (totalLength - currentLeft != currentLeft){
 
-                int leftMin = foundMidLeft (min,startMin,endMin,max[median]);
-                int leftMax = median;
-                currentLeft = leftMax + leftMin;
+        int startNum1 = 0;
+        int startNum2 = 0;
+        int endNum1 = nums1.length-1;
+        int endNum2 = nums2.length -1;
+        int n1;
+        int n2;
 
-            if (totalLength - currentLeft -currentLeft == 1 || totalLength - currentLeft == currentLeft ){
-                return median;
-            }
-            if (totalLength - currentLeft < currentLeft) {
-                endMax = median-1;
-                median = startMax + (endMax - startMax)/2;
-            } else if (totalLength - currentLeft > currentLeft) {
-                startMax = median + 1;
-                median = startMax + (endMax - startMax) / 2;
+        while (checkSituatuin (nums1,nums2,n1,n2)) {
+            n1 = startNum1 + (endNum1 - startNum1)/2;
+            n2 = startNum2 + (endNum2 -startNum2)/2;
+            if (nums1[n1] == nums2[n2]) {
+                startNum1 = n1;
+                startNum2 = n2;
+                endNum1 = n1;
+                endNum2 = n2;
             }
         }
-        return max[median];
+
 
     }
-    private static int foundMidLeft(int [] nums, int left,int right,int num){
-        int position = 0;
-        while ( left <  right ){
-            position = left + (right-left)/2;
-            if (nums[position] == num){
-                return position;
-            } else if (nums[position] > num) {
-                right = position-1;
-            } else if (nums[position] < num){
-                left=position+1;
-            }
-        }
+    private boolean checkSituatuin (int [] nums1, int [] nums2,int n1,int n2){
+        if (nums1[n1] < nums2[n2+1])
 
-        return left;
     }
+
 }
+
 ///// 1 2 3 / 4
-/////   3 / 4 5 6
-/////   2 2 2 //  2 2 // 2 2 2
-/////                           //1 1 // 1 1 1
+/////       {1,2,3,4 ,5,   7 7,7,  7,7,8,9};
+//         {2,3,4,6,    6,       8,9,9,9};

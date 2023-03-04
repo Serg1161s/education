@@ -5,10 +5,11 @@ public class MainApp {
 
         SolutionFindMedianSortedArrays s = new SolutionFindMedianSortedArrays();
 
-        int [] num1 = {1,2,3,4,5,7};
-        int [] num2 = {2,3,4,6,7,8};
+        int [] num2 = {1,3,3,3,5,5};
+        int [] num1 = { 4,4,4,4};
 
-        System.out.println(s.findMedianSortedArrays(num1,num2));
+      System.out.println(s.findMedianSortedArrays(num1,num2));
+
 
     }
 }
