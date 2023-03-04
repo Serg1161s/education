@@ -8,7 +8,7 @@ public class MainApp {
         int [] num2 = {1,3,3,3,5,5};
         int [] num1 = { 4,4,4,4};
 
-      System.out.println(s.findMedianSortedArrays(num1,num2));
+      //System.out.println(s.findMedianSortedArrays(num1,num2));
 
 
     }
