@@ -22,9 +22,7 @@ public class MainApp {
 
 //        Solution3 s = new Solution3();
 //        System.out.println(s.preorderTraversal(root));
-        SolutionInOrder sPO = new SolutionInOrder();
-        System.out.println(sPO.inorderTraversal(root));
-        InorderTraversal s = new InorderTraversal();
-        System.out.println(s.inorderTraversal(root));
+        PathSum pathSum = new PathSum();
+        System.out.println(pathSum.hasPathSum(root,7));
     }
 }
