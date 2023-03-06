@@ -7,12 +7,11 @@ public class SolutionSummeryRanges {
     public List<String> summaryRanges(int[] nums) {
 
         List<String> list = new ArrayList<>();
-        String temp ="";
+        StringBuilder temp = new StringBuilder();
         if (nums.length < 1) return list;
         if (nums.length == 1){
-            temp = "" + nums[0];
-            list.add(temp);
-            return list;
+            temp.append(nums[0]);
+            list.add(temp.toString());return list;
         }
 
         for (int i = 0; i < nums.length; i++) {
@@ -25,11 +24,12 @@ public class SolutionSummeryRanges {
                 }
             }
             if (count>0) {
-               temp = nums[start] + "->" + nums[i];
+               temp.append(nums[start]).append("->").append(nums[i]);
             } else
-                temp ="" + nums[start];
+                temp.append(nums[start]);
 
-            list.add(temp);
+            list.add(temp.toString());
+            temp.setLength(0);
         }
         return list;
     }

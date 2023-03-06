@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solutoin {
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
+    protected boolean containsNearbyDuplicate(int[] nums, int k) {
 
 
 
