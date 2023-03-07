@@ -1,4 +1,4 @@
-package leetcode.algoritm.SortArray;
+package leetcode.algoritm.sort_array;
 
 public class SortArray {
     public int[] sortArray(int[] nums) {
