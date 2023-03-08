@@ -3,11 +3,11 @@ package leetcode.algoritm.minimum_time;
 public class MainApp {
     public static void main(String[] args) {
         int [] timeTrip = {
-               3,4,5,6,7
+              10,20,30,40,50
 
         };
 
-        int numOfTrip = 20;
+        int numOfTrip = 10;
 
         SolutionMinimumTime solutionMinimumTime = new SolutionMinimumTime();
         System.out.println(solutionMinimumTime.minimumTime(timeTrip,numOfTrip));

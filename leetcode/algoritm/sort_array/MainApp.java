@@ -14,7 +14,10 @@ public class MainApp {
 
         System.out.println(Arrays.toString(nums));
         SortArray sortArray = new SortArray();
+        MerrgSort merrgSort = new MerrgSort();
+        BestSort bestSort = new BestSort();
 
-        System.out.println(Arrays.toString(sortArray.sortArray(nums)));
+     //   System.out.println(Arrays.toString(sortArray.sortArray(nums)));
+        System.out.println(Arrays.toString(bestSort.sortArray(nums)));
     }
 }

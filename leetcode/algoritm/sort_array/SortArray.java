@@ -1,42 +1,53 @@
 package leetcode.algoritm.sort_array;
 
 public class SortArray {
-    public int[] sortArray(int[] nums) {
+    protected int[] sortArray(int[] nums) {
 
-        int start1 = 0;
-        int start2 = 1;
-        int step = 1;
-        while (start2 < nums.length) {
-            while (start1 != nums.length - 1 && start2 < nums.length) {
-                int end = start2;
-                while (start1 < end) {
-                    if (nums[start1] > nums[start2]) {
-                        nums = swap(nums, start1, start2);
-                    }
-                    start1++;
-                    start2++;
-                }
-                start1 = start1 + step;
-                start2 = start2 + step;
+        int start = 0;
+        int end = nums.length-1;
 
-
-            }
-            step = step * 2;
-            start1 = 0;
-            start2 = start1 + step;
-        }
-
+        quickSort(nums,start,end);
 
 
 
         return nums;
     }
-        private static int [] swap (int [] nums, int start1, int start2){
+        private static void swap (int [] nums, int start1, int start2){
 
         int temp = nums[start1];
         nums[start1] = nums [start2];
         nums[start2] = temp;
-        return nums;
+
+
+    }
+    private static void   quickSort(int [] nums,int start, int end){
+       if (nums.length == 0) return;
+
+       if ( end <= start) return;
+           int med = start + (end-start)/2;
+           int op = nums[med];
+        int i = start;
+        int j = end;
+           while (i <= j) {
+               while (nums[i] < op){
+                    i++;
+               }
+               while (nums[j] > op){
+                   j--;
+               }
+               if (i<=j){
+                   swap(nums,i,j);
+                   i++;
+                   j--;
+
+               }
+           }
+           if (start< j) {
+               quickSort(nums,start,j);
+           }
+           if (end> i) {
+               quickSort(nums,i,end);
+           }
 
     }
 
