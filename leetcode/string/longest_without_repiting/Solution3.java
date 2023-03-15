@@ -1,4 +1,4 @@
-package leetcode.Sstring.longest_without_repiting;
+package leetcode.string.longest_without_repiting;
 
 import java.util.HashSet;
 import java.util.Set;

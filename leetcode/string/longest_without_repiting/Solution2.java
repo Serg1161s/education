@@ -1,4 +1,4 @@
-package leetcode.Sstring.longest_without_repiting;
+package leetcode.string.longest_without_repiting;
 
 public class Solution2 {
     protected int lengthOfLongestSubstring(String s) {
