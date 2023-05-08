@@ -1,7 +1,4 @@
-package leetcode.Dota2Senat;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
+package leetcode.dota2Senat;
 
 public class SolutionDota2Senat {
 
