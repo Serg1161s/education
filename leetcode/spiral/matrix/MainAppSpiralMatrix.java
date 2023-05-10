@@ -16,14 +16,24 @@ public class MainAppSpiralMatrix {
 
         }
 
-        for (int i = 0; i < matrix.length; i++) {
-            System.out.println(Arrays.toString(matrix[i]));
-
-        }
+//        for (int i = 0; i < matrix.length; i++) {
+//            System.out.println(Arrays.toString(matrix[i]));
+//
+//        }
 
         SolutionSpiralMatrix sol = new SolutionSpiralMatrix();
 
-       sol.spiralOrder(matrix);
+
+     //  sol.spiralOrder(matrix);
+
+        SolutionSpiralMatrix2 solutionSpiralMatrix2=new SolutionSpiralMatrix2();
+        int n = 5;
+        int [][] mat = solutionSpiralMatrix2.generateMatrix(n);
+        for (int i = 0; i < n; i++) {
+            System.out.println(Arrays.toString(mat[i]));
+        }
+        System.out.println(solutionSpiralMatrix2.generateMatrix(3));
+
 
     }
 }
