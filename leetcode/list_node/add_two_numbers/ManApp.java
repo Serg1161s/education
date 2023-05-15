@@ -1,8 +1,5 @@
 package leetcode.list_node.add_two_numbers;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class ManApp {
 
     public static void main(String[] args) {
