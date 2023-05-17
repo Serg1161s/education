@@ -14,7 +14,14 @@ public class SolutionSwapNodes {
         }
         count = count.next;
     }
-        int back = size-temp;
+
+        int back = size-temp+1;
+    if (back < size){
+        int change = back;
+        back =k;
+        k=change;
+
+    }
 
     size = 0;
     ListNodeForSwap ansswer = head;
@@ -30,6 +37,7 @@ public class SolutionSwapNodes {
             tempSecond = ansswer.val;
             ansswer.val = tempFirst;
         }
+        if (back==size)break;
         ansswer = ansswer.next;
 
     }
@@ -39,22 +47,14 @@ public class SolutionSwapNodes {
         size++;
         if (size == k){
             ansswer.val = tempSecond;
-            return head;
+            break;
         }
 
         ansswer = ansswer.next;
     }
 
-    while (head != null){
-        System.out.println(head.val);
-        head = head.next;
-    }
 
-        System.out.println(size);
-        System.out.println(temp);
-        System.out.println(back);
-
-    return count;
+    return head;
     }
 
 }
