@@ -13,26 +13,31 @@ public class MainAppEvaluateDivision {
         equation1.add("a");
         equation1.add("b");
         List<String> equation2 = new ArrayList<>();
-        equation2.add("b");
-        equation2.add("c");
+        equation2.add("e");
+        equation2.add("f");
+        List<String> equation3 = new ArrayList<>();
+        equation3.add("b");
+        equation3.add("e");
+
         List<List<String>> equations = new ArrayList<>();
         equations.add(equation1);
         equations.add(equation2);
-        double [] values = {2.0, 3.0};
+        equations.add(equation3);
+        double [] values = {3.4, 1.40,2.3};
 
 
         List<String> query1 = new ArrayList<>();
+        query1.add("b");
         query1.add("a");
-        query1.add("c");
         List<String> query2 = new ArrayList<>();
-        query2.add("b");
         query2.add("a");
+        query2.add("f");
         List<String> query3 = new ArrayList<>();
+        query3.add("b");
         query3.add("e");
-        query3.add("a");
         List<String> query4 = new ArrayList<>();
-        query4.add("a");
-        query4.add("e");
+        query4.add("cd");
+        query4.add("bc");
         List<String> query5 = new ArrayList<>();
         query5.add("x");
         query5.add("x");
@@ -41,7 +46,7 @@ public class MainAppEvaluateDivision {
         queries.add(query2);
         queries.add(query3);
         queries.add(query4);
-        queries.add(query5);
+       // queries.add(query5);
         for (List<String> list:equations) {
             System.out.print("{");
             for (String str: list ) {
