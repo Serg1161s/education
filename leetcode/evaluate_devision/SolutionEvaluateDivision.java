@@ -10,47 +10,77 @@ public class SolutionEvaluateDivision {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         double[] answer = new double[queries.size()];
 
-        HashMap<String,Double> map = new HashMap<>();
-        int countValues = 0;
-        for (List<String> listEquations:equations) {
-            if (!map.containsKey(listEquations.get(0))) {
-                map.put(listEquations.get(0), values[countValues]);
-            }
-            countValues++;
-        }
-        countValues = 0;
-        for (List<String> listEquations: equations){
-            if (!map.containsKey(listEquations.get(1))){
-                map.put(listEquations.get(1), 1/ values[countValues]);
-            } else {
-
-                map.put(listEquations.get(0),values[countValues] * map.get(listEquations.get(0)) );
-                map.put(listEquations.get(1), 1/map.get(listEquations.get(0)));
+        HashMap <String, Double> map = new HashMap<>();
+        int countEq = 0;
+        for (List<String> list: equations) {
+            if (!map.containsKey(list.get(0))){
+                if (values[countEq] == 1) {
+                    map.put(list.get(0), -1.0);
+                } else {
+                    map.put(list.get(0), findNum(list.get(1), equations, values, values[countEq]));
                 }
-            countValues++;
+            }
+            countEq++;
         }
-
-        map.entrySet().forEach(entry ->
-        {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-
+        countEq = 0;
+        for (List<String> list: equations) {
+            if (!map.containsKey(list.get(1))){
+                if (values[countEq] == 1) {
+                map.put(list.get(1),-1.0);
+            } else {
+                    map.put(list.get(1),1.0);
+                }
+            countEq++;
+        }
+        }
+    map.entrySet().forEach(entry -> {
+        System.out.println(entry.getKey()+ ", "+ entry.getValue());
+    });
         int countQueries = 0;
-        for (List<String> listQueries:queries) {
-            if (!map.containsKey(listQueries.get(0))) {
-                answer[countQueries] = -1.0;
+        for (List<String> list: queries){
+            if (!map.containsKey(list.get(0)) || (!map.containsKey(list.get(1))) ) {
+                    answer[countQueries] = -1;
+            } else if (map.get(list.get(0)) < 0 || (map.get(list.get(1))) <0){
+                if (list.get(0).equals(list.get(1))){
+                    answer[countQueries] = 1;
+                } else {
+                    answer[countQueries] = -1;
+                }
             }
-            if (!map.containsKey(listQueries.get(1))) {
-                answer[countQueries] = -1.0;
+
+             else if (map.containsKey(list.get(0)) || (map.containsKey(list.get(1)))){
+                answer[countQueries] = map.get(list.get(0)) / map.get(list.get(1));
             }
-            if (answer[countQueries] != -1) {
-                answer[countQueries] = map.get(listQueries.get(0)) / map.get(listQueries.get(1));
-            }
-           countQueries++;
+            countQueries++;
         }
-        System.out.println(Arrays.toString(answer));
 
         return answer;
     }
+   private static double  findNum(String str, List<List<String>> equations, double [] values,double answer){
 
+
+        int countEquation = 0;
+
+        for (List<String> equation: equations) {
+            if (str.equals (equation.get(0))) {
+                answer *= values[countEquation];
+                str = equation.get(1);
+                return findNum(str, equations, values, answer);
+            }
+            countEquation++;
+        }
+        return answer;
+    }
+    private static double  findNum2(String str, List<List<String>> equations, double [] values,double answer){
+        int countEquation = 0;
+        for (List<String> equation: equations) {
+            if (str.equals (equation.get(1))) {
+                answer *= values[countEquation];
+                str = equation.get(0);
+                return findNum2(str, equations, values, answer);
+            }
+            countEquation++;
+        }
+        return answer;
+    }
 }
