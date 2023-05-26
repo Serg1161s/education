@@ -9,78 +9,82 @@ public class SolutionEvaluateDivision {
 
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         double[] answer = new double[queries.size()];
+        int count = 0;
+        for (List<String> query: queries){
+            double sum = foundAnswer (query.get(0),query,values,equations);
+            answer[count++] = sum;
+        }
 
-        HashMap <String, Double> map = new HashMap<>();
-        int countEq = 0;
-        for (List<String> list: equations) {
-            if (!map.containsKey(list.get(0))){
-                if (values[countEq] == 1) {
-                    map.put(list.get(0), -1.0);
-                } else {
-                    map.put(list.get(0), findNum(list.get(1), equations, values, values[countEq]));
-                }
-            }
-            countEq++;
-        }
-        countEq = 0;
-        for (List<String> list: equations) {
-            if (!map.containsKey(list.get(1))){
-                if (values[countEq] == 1) {
-                map.put(list.get(1),-1.0);
-            } else {
-                    map.put(list.get(1),1.0);
-                }
-            countEq++;
-        }
-        }
-    map.entrySet().forEach(entry -> {
-        System.out.println(entry.getKey()+ ", "+ entry.getValue());
-    });
-        int countQueries = 0;
-        for (List<String> list: queries){
-            if (!map.containsKey(list.get(0)) || (!map.containsKey(list.get(1))) ) {
-                    answer[countQueries] = -1;
-            } else if (map.get(list.get(0)) < 0 || (map.get(list.get(1))) <0){
-                if (list.get(0).equals(list.get(1))){
-                    answer[countQueries] = 1;
-                } else {
-                    answer[countQueries] = -1;
-                }
-            }
 
-             else if (map.containsKey(list.get(0)) || (map.containsKey(list.get(1)))){
-                answer[countQueries] = map.get(list.get(0)) / map.get(list.get(1));
-            }
-            countQueries++;
-        }
 
         return answer;
     }
-   private static double  findNum(String str, List<List<String>> equations, double [] values,double answer){
-
-
-        int countEquation = 0;
-
-        for (List<String> equation: equations) {
-            if (str.equals (equation.get(0))) {
-                answer *= values[countEquation];
-                str = equation.get(1);
-                return findNum(str, equations, values, answer);
+    private static double foundAnswer (String strFirst, List<String> query, double [] values,List<List<String>> equations){
+int count = 0;
+double ans = 1;
+        for (List<String> equation : equations) {
+            if (query.get(0).equals(equation.get(0)) && query.get(1).equals(query.get(0))) {
+                return 1;
             }
-            countEquation++;
-        }
-        return answer;
-    }
-    private static double  findNum2(String str, List<List<String>> equations, double [] values,double answer){
-        int countEquation = 0;
-        for (List<String> equation: equations) {
-            if (str.equals (equation.get(1))) {
-                answer *= values[countEquation];
-                str = equation.get(0);
-                return findNum2(str, equations, values, answer);
+            if (query.get(1).equals(equation.get(1)) && query.get(1).equals(query.get(0))) {
+                return 1;
             }
-            countEquation++;
+            if (query.get(1).equals(equation.get(0)) && query.get(0).equals(equation.get(1))){
+                return  1/values[count];
+            }
+            if (strFirst.equals(equation.get(0))) {
+
+                 ans = firstStep(query.get(0), query, values, equations, 1);
+                if (ans > 0) {
+                    return ans;
+                }
+            }
+                ans = secondStep(query.get(0), query, values, equations, ans);
+                    if (ans > 0) {
+                        return ans;
+
+
+            }
+            count++;
         }
-        return answer;
+
+        return -1;
     }
+    private static double firstStep (String strFirst, List<String> query, double [] values,List<List<String>> equations, double ans){
+        int count = 0;
+        for (List<String> equation : equations){
+            if (strFirst.equals(equation.get(0))){
+                ans*=values[count];
+                if (query.get(1).equals((equation.get(1)))){
+                    return ans;
+                }
+                return firstStep(equation.get(1),query,values,equations,ans);
+
+            } else
+            if (strFirst.equals(equation.get(1)) &&  (query.get(1).equals((equation.get(0))))){
+                    return ans/values[count];
+                }
+
+            count++;
+        }
+        return -1 * ans;
+    }
+    private static double secondStep (String strFirst, List<String> query, double [] values,List<List<String>> equations, double ans){
+        int count = 0;
+        for (List<String> equation : equations){
+            if (strFirst.equals(equation.get(1))){
+                ans/=values[count];
+                if (query.get(1).equals((equation.get(0)))){
+                    return -1*ans;
+                }
+                return secondStep (equation.get(0),query,values,equations,ans);
+
+            } else if (strFirst.equals(equation.get(0)) &&  (query.get(1).equals((equation.get(1))))){
+                return ans*values[count];
+            }
+            count++;
+        }
+        return -1;
+    }
+
 }
