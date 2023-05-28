@@ -75,8 +75,11 @@ public class MainAppEvaluateDivision {
 //        SolutionEvaluateDivision solutionEvaluateDivision = new SolutionEvaluateDivision();
 //        System.out.println(Arrays.toString(solutionEvaluateDivision.calcEquation(equations,values,queries)));
 
-        SolutionEaDev2 solutionEaDev2 = new SolutionEaDev2();
-        System.out.println(Arrays.toString(solutionEaDev2.calcEquation(equations,values,queries)));
+//        SolutionEaDev2 solutionEaDev2 = new SolutionEaDev2();
+//        System.out.println(Arrays.toString(solutionEaDev2.calcEquation(equations,values,queries)));
+
+        Sol3BEST sol3 = new Sol3BEST();
+        System.out.println(Arrays.toString(sol3.calcEquation(equations,values,queries)));
     }
 
 }
