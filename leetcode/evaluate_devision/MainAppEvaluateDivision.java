@@ -16,10 +16,10 @@ public class MainAppEvaluateDivision {
         equation2.add("x2");
         equation2.add("x3");
         List<String> equation3 = new ArrayList<>();
-        equation3.add("x3");
+        equation3.add("x1");
         equation3.add("x4");
         List<String> equation4 = new ArrayList<>();
-        equation4.add("x4");
+        equation4.add("x2");
         equation4.add("x5");
 
 
@@ -35,14 +35,14 @@ public class MainAppEvaluateDivision {
         query1.add("x5");
         query1.add("x2");
         List<String> query2 = new ArrayList<>();
-        query2.add("e");
-        query2.add("e");
+        query2.add("x4");
+        query2.add("x3");
         List<String> query3 = new ArrayList<>();
-        query3.add("x");
-        query3.add("x");
+        query3.add("bc");
+        query3.add("cd");
         List<String> query4 = new ArrayList<>();
-        query4.add("a");
-        query4.add("a");
+        query4.add("cd");
+        query4.add("bc");
         List<String> query5 = new ArrayList<>();
         query5.add("x");
         query5.add("x");
@@ -72,8 +72,11 @@ public class MainAppEvaluateDivision {
             System.out.print(" ");
         }
         System.out.println("");
-        SolutionEvaluateDivision solutionEvaluateDivision = new SolutionEvaluateDivision();
-        System.out.println(Arrays.toString(solutionEvaluateDivision.calcEquation(equations,values,queries)));
+//        SolutionEvaluateDivision solutionEvaluateDivision = new SolutionEvaluateDivision();
+//        System.out.println(Arrays.toString(solutionEvaluateDivision.calcEquation(equations,values,queries)));
+
+        SolutionEaDev2 solutionEaDev2 = new SolutionEaDev2();
+        System.out.println(Arrays.toString(solutionEaDev2.calcEquation(equations,values,queries)));
     }
 
 }

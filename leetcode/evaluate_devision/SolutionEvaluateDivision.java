@@ -1,90 +1,63 @@
 package leetcode.evaluate_devision;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class SolutionEvaluateDivision {
 
-    public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        double[] answer = new double[queries.size()];
-        int count = 0;
-        for (List<String> query: queries){
-            double sum = foundAnswer (query.get(0),query,values,equations);
-            answer[count++] = sum;
+    private void dfs(String node, String dest, HashMap<String, HashMap<String, Double>> gr, HashSet<String> vis, double[] ans, double temp) {
+        if (vis.contains(node))
+            return;
+
+        vis.add(node);
+        if (node.equals(dest)) {
+            ans[0] = temp;
+            return;
         }
 
-
-
-        return answer;
+        for (Map.Entry<String, Double> entry : gr.get(node).entrySet()) {
+            String ne = entry.getKey();
+            double val = entry.getValue();
+            dfs(ne, dest, gr, vis, ans, temp * val);
+        }
     }
-    private static double foundAnswer (String strFirst, List<String> query, double [] values,List<List<String>> equations){
-int count = 0;
-double ans = 1;
-        for (List<String> equation : equations) {
-            if (query.get(0).equals(equation.get(0)) && query.get(1).equals(query.get(0))) {
-                return 1;
-            }
-            if (query.get(1).equals(equation.get(1)) && query.get(1).equals(query.get(0))) {
-                return 1;
-            }
-            if (query.get(1).equals(equation.get(0)) && query.get(0).equals(equation.get(1))){
-                return  1/values[count];
-            }
-            if (strFirst.equals(equation.get(0))) {
 
-                 ans = firstStep(query.get(0), query, values, equations, 1);
-                if (ans > 0) {
-                    return ans;
-                }
-            }
-                ans = secondStep(query.get(0), query, values, equations, ans);
-                    if (ans > 0) {
-                        return ans;
+    private HashMap<String, HashMap<String, Double>> buildGraph(List<List<String>> equations, double[] values) {
+        HashMap<String, HashMap<String, Double>> gr = new HashMap<>();
 
+        for (int i = 0; i < equations.size(); i++) {
+            String dividend = equations.get(i).get(0);
+            String divisor = equations.get(i).get(1);
+            double value = values[i];
 
-            }
-            count++;
+            gr.putIfAbsent(dividend, new HashMap<>());
+            gr.putIfAbsent(divisor, new HashMap<>());
+
+            gr.get(dividend).put(divisor, value);
+            gr.get(divisor).put(dividend, 1.0 / value);
         }
 
-        return -1;
+        return gr;
     }
-    private static double firstStep (String strFirst, List<String> query, double [] values,List<List<String>> equations, double ans){
-        int count = 0;
-        for (List<String> equation : equations){
-            if (strFirst.equals(equation.get(0))){
-                ans*=values[count];
-                if (query.get(1).equals((equation.get(1)))){
-                    return ans;
-                }
-                return firstStep(equation.get(1),query,values,equations,ans);
 
-            } else
-            if (strFirst.equals(equation.get(1)) &&  (query.get(1).equals((equation.get(0))))){
-                    return ans/values[count];
-                }
+    protected double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        HashMap<String, HashMap<String, Double>> gr = buildGraph(equations, values);
+        double[] finalAns = new double[queries.size()];
 
-            count++;
-        }
-        return -1 * ans;
-    }
-    private static double secondStep (String strFirst, List<String> query, double [] values,List<List<String>> equations, double ans){
-        int count = 0;
-        for (List<String> equation : equations){
-            if (strFirst.equals(equation.get(1))){
-                ans/=values[count];
-                if (query.get(1).equals((equation.get(0)))){
-                    return -1*ans;
-                }
-                return secondStep (equation.get(0),query,values,equations,ans);
+        for (int i = 0; i < queries.size(); i++) {
+            String dividend = queries.get(i).get(0);
+            String divisor = queries.get(i).get(1);
 
-            } else if (strFirst.equals(equation.get(0)) &&  (query.get(1).equals((equation.get(1))))){
-                return ans*values[count];
+            if (!gr.containsKey(dividend) || !gr.containsKey(divisor)) {
+                finalAns[i] = -1.0;
+            } else {
+                HashSet<String> vis = new HashSet<>();
+                double[] ans = {-1.0};
+                double temp = 1.0;
+                dfs(dividend, divisor, gr, vis, ans, temp);
+                finalAns[i] = ans[0];
             }
-            count++;
         }
-        return -1;
-    }
 
+        return finalAns;
+    }
 }
