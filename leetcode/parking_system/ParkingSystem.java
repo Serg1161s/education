@@ -4,14 +4,14 @@ public class ParkingSystem {
     int big;
     int medium;
     int small;
-    public ParkingSystem(int big, int medium, int small) {
+    protected ParkingSystem(int big, int medium, int small) {
         this.big = big;
         this.medium = medium;
         this.small = small;
 
     }
 
-    public boolean addCar(int carType) {
+    protected boolean addCar(int carType) {
         if ((carType == 1) && (big > 0)){
             big--;
             return true;
@@ -27,5 +27,13 @@ public class ParkingSystem {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "ParkingSystem{" +
+                "big=" + big +
+                ", medium=" + medium +
+                ", small=" + small +
+                '}';
+    }
 }
 
