@@ -7,7 +7,7 @@ public class MainApp {
 
         Solution s = new Solution();
 
-        System.out.println(s.shipWithinDays(cargo,4));
+        System.out.println(s.shipWithinDays(cargo,5));
 
     }
 }

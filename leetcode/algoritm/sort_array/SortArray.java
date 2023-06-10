@@ -1,5 +1,7 @@
 package leetcode.algoritm.sort_array;
 
+import java.util.Arrays;
+
 public class SortArray {
     protected int[] sortArray(int[] nums) {
 
@@ -17,6 +19,7 @@ public class SortArray {
         int temp = nums[start1];
         nums[start1] = nums [start2];
         nums[start2] = temp;
+            System.out.println(Arrays.toString(nums));
 
 
     }

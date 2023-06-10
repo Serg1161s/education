@@ -1,7 +1,7 @@
 package leetcode.algoritm.sort_array;
 
 public class MerrgSort {
-    public int[] sortArray(int[] nums) {
+    protected int[] sortArray(int[] nums) {
         if (nums == null || nums.length == 0) return nums;
         int[] helper = new int[nums.length];
         mergeSort (nums, 0, nums.length -1, helper);
@@ -9,8 +9,6 @@ public class MerrgSort {
     }
     private void mergeSort (int[] nums, int left, int right, int[] helper) {
         if (left >= right) return;
-
-
         int mid = left + (right - left) /2;
         mergeSort (nums, left, mid, helper);
         mergeSort (nums, mid + 1, right, helper);
