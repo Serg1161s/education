@@ -4,39 +4,29 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Visualisation {
-    public static void main(String[] args) {
+    public static void createGUI()
+    {
+        JFrame frame = new JFrame("Test frame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JFrame frame = new JFrame("Main");
-        frame.setName("Main");
-        frame.setFont(new Font(null,Font.ITALIC,20));
-        frame.setSize(700,700);
-        frame.setBackground(Color.lightGray);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        JLabel label = new JLabel("Test label");
+        frame.getContentPane().add(label);
 
-        JMenu menu = new JMenu();
-        menu.setVisible(true);
-        menu.setBackground(Color.orange);
-        menu.setSize(700,50);
-        frame.add(menu);
+        frame.setPreferredSize(new Dimension(500    , 200));
 
-
-
-        JPanel panel = new JPanel();
-        panel.setSize(100,100);
-        panel.setBackground(Color.GREEN);
-        panel.setVisible(true);
-        panel.setLocation(0,600);
-
-
-        JButton ok = new JButton("CHECK");
-        ok.setSize(60,30);
-        ok.setLocation(650, 600 );
-        ok.setVisible(true);
-        panel.add(ok);
-        panel.add(menu);
-
-        frame.add(panel);
+        frame.pack();
         frame.setVisible(true);
+    }
+
+    public static void main(String[] args)
+    {
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createGUI();
+            }
+        });
+
     }
 }
