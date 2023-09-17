@@ -15,18 +15,13 @@ public class Page extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(0, 0 , 600,600);
         setLocationRelativeTo(null);
-
-
+        setSize(500,500);
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(new Color(0,100,    00));
+        setLayout(null);
 
         addComponentsToPage();
 
-
-
-        setSize(500,500);
-        setLocationRelativeTo(null);
-
-        getContentPane().setBackground(new Color(0,100,    00));
-        setLayout(null);
         setVisible(true);
     }
     private void addComponentsToPage (){
