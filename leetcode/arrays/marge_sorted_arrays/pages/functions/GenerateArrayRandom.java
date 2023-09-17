@@ -1,12 +1,17 @@
 package leetcode.arrays.marge_sorted_arrays.pages.functions;
 
-public class GenerateArrayRandom {
-    public int [] generateArrayRandom(int lengthOfArray, int rangeOfArray){
-        int[] ans = new int[lengthOfArray];
-        for (int i = 0; i < lengthOfArray; i++) {
-            ans[i] = (int) (  Math.random()*rangeOfArray);
+import leetcode.arrays.marge_sorted_arrays.pages.arrays.ArrayFirst;
 
+import java.util.Arrays;
+
+public class GenerateArrayRandom {
+
+    public static String [] generateArrayRandom(int lengthOfArray, int rangeOfNum){
+        String [] ans = new String[lengthOfArray];
+        for (int i = 0; i < lengthOfArray; i++) {
+
+            ans[i] = String.valueOf ((int)  (Math.random()*rangeOfNum));
         }
-    return ans;
+        return ans;
     }
 }

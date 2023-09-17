@@ -15,7 +15,7 @@ public class MainAppMargeSortedArrays {
 
 
        SolutionSortedArrays solutionSortedArrays = new SolutionSortedArrays();
-       solutionSortedArrays.marge(nums1,m,nums2,n);
+
 
        System.out.println(Arrays.toString(nums1));
 
