@@ -1,10 +1,8 @@
 package leetcode.arrays.marge_sorted_arrays.pages;
 
-import leetcode.arrays.marge_sorted_arrays.pages.fields.FirstNums;
+import leetcode.arrays.marge_sorted_arrays.pages.buttoms.GenerateArrays;
+import leetcode.arrays.marge_sorted_arrays.pages.fields.*;
 import leetcode.arrays.marge_sorted_arrays.pages.buttoms.MargeButton;
-import leetcode.arrays.marge_sorted_arrays.pages.fields.LengthOfArray;
-import leetcode.arrays.marge_sorted_arrays.pages.fields.RangeOfNums;
-import leetcode.arrays.marge_sorted_arrays.pages.fields.SecondNums;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,20 +17,29 @@ public class Page extends JFrame {
         setLocationRelativeTo(null);
 
 
-        add(rangeOfNums());
-        add(lengthOfArray());
-        add(firstNums());
-        add(secondNums());
-        add(margeButton());
+
+        addComponentsToPage();
 
 
-    //    setJMenuBar(menuBar);
+
         setSize(500,500);
         setLocationRelativeTo(null);
 
         getContentPane().setBackground(new Color(0,100,    00));
         setLayout(null);
         setVisible(true);
+    }
+    private void addComponentsToPage (){
+        add(rangeOfNums());
+        add(lengthOfArray());
+        add(firstNums());
+        add(secondNums());
+        add(margeButton());
+        add(generateArrays());
+        add(lengthOfArrayNum());
+        add(rangeOfNumsNum());
+        add(resultOfMarge());
+
     }
 
     private JTextField firstNums(){
@@ -49,6 +56,19 @@ public class Page extends JFrame {
     }
     private JTextField rangeOfNums(){
         return  new RangeOfNums();
+    }
+
+    private JTextField lengthOfArrayNum(){
+        return new LengthOfArrayNum();
+    }
+    private JTextField rangeOfNumsNum (){
+        return new RangeOfNumsNum();
+    }
+    private JButton generateArrays () {
+        return new GenerateArrays();
+    }
+    private JTextField resultOfMarge(){
+        return  new ResultOfMarge();
     }
 
 

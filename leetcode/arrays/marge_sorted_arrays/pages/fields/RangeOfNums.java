@@ -5,8 +5,9 @@ import javax.swing.*;
 public class RangeOfNums extends JTextField {
     public RangeOfNums(){
         setBounds(50, 50,100,50);
-        setFocusable(true);
-        setText("First Num");
+        setFocusable(false);
+        setEditable(false);
+        setText("NumberLength");
         setEditable(true);
         setHorizontalAlignment(JTextField.CENTER);
         setVisible(true);

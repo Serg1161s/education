@@ -4,11 +4,12 @@ import javax.swing.*;
 
 public class LengthOfArray extends JTextField {
     public LengthOfArray(){
-        setBounds(200, 50,100,50);
-        setFocusable(true);
-        setText("First Num");
-        setEditable(true);
+        setBounds(250, 50,100,50);
+        setFocusable(false);
+        setText("ArrayLength");
+        setEditable(false);
         setHorizontalAlignment(JTextField.CENTER);
+        setEditable(false);
         setVisible(true);
 
     }
