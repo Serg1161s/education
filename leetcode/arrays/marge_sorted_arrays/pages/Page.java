@@ -1,6 +1,6 @@
 package leetcode.arrays.marge_sorted_arrays.pages;
 
-import leetcode.arrays.marge_sorted_arrays.SolutionSortedArrays;
+import leetcode.arrays.marge_sorted_arrays.pages.functions.SolutionSortedArrays;
 import leetcode.arrays.marge_sorted_arrays.pages.buttoms.GenerateArraysButton;
 import leetcode.arrays.marge_sorted_arrays.pages.fields.*;
 import leetcode.arrays.marge_sorted_arrays.pages.buttoms.MargeButton;
